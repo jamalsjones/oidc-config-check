@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OIDC Config Check</title>
+    <meta name="description" content="Review an OpenID Connect discovery document against OIDC Discovery, RFC 9700 and RFC 8725. Runs in your browser." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="top">
+        <h1 class="wordmark">oidc config check</h1>
+        <p class="label">Discovery · RFC 9700 · 8725</p>
+      </header>
+      <p class="lede">Review what your identity provider advertises: the flows it still allows, PKCE, signing algorithms, client authentication and the newer defenses. Checks run in this page.</p>
+
+      <div class="grid two">
+        <section class="panel">
+          <p class="label">Fetch from your provider</p>
+          <div class="row" style="margin-top:0">
+            <input id="url" type="url" placeholder="https://login.example.com" style="flex:1;min-width:200px" />
+            <button class="pill dark" id="fetch">Fetch</button>
+          </div>
+          <p class="note" id="fetch-note">Your browser fetches <code>/.well-known/openid-configuration</code> from that issuer directly. Some providers block this; if so, paste the document below.</p>
+
+          <p class="label" style="margin-top:18px">Or paste the document</p>
+          <textarea id="doc" spellcheck="false" autocomplete="off" placeholder='{ "issuer": "https://login.example.com", ... }'></textarea>
+          <div class="row">
+            <button class="pill dark" id="check">Check</button>
+            <button class="pill outline" id="sample-legacy">Try a legacy provider</button>
+            <button class="pill outline" id="sample-modern">Try a modern provider</button>
+          </div>
+        </section>
+
+        <section class="panel" id="results" aria-live="polite">
+          <p class="label">Findings</p>
+          <p class="empty">Fetch or paste a discovery document, or try a sample.</p>
+        </section>
+      </div>
+
+      <section class="panel" style="margin-top:16px">
+        <p class="label">In a pipeline</p>
+        <p style="margin:0 0 10px">The same file is a command-line tool. Run it on a schedule against your issuers to catch a setting someone turned back on. It exits 1 on errors.</p>
+        <pre class="json">node oidc-config-check.js https://login.example.com --fail-on warn</pre>
+      </section>
+
+      <footer>
+        <span>By <a href="https://www.jamalsjones.com">Jamal Jones</a></span>
+        <a href="https://github.com/jamalsjones/oidc-config-check">Source on GitHub</a>
+        <a href="https://jamalsjones.github.io/jwt-lint/">JWT lint</a>
+        <a href="https://jamalsjones.github.io/leaver-check/">Leaver check</a>
+      </footer>
+    </main>
+    <script src="oidc-config-check.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

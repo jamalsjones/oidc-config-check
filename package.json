@@ -1,0 +1,13 @@
+{
+  "name": "oidc-config-check",
+  "version": "1.0.0",
+  "description": "Review an OpenID Connect discovery document against OIDC Discovery, RFC 9700 and RFC 8725. Browser page and command-line tool, no dependencies.",
+  "license": "MIT",
+  "author": "Jamal Jones (https://www.jamalsjones.com)",
+  "main": "oidc-config-check.js",
+  "bin": { "oidc-config-check": "oidc-config-check.js" },
+  "scripts": { "test": "node --test" },
+  "engines": { "node": ">=18" },
+  "repository": { "type": "git", "url": "https://github.com/jamalsjones/oidc-config-check" },
+  "keywords": ["oidc", "openid-connect", "oauth", "rfc9700", "pkce", "iam", "security"]
+}
