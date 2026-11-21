@@ -38,6 +38,7 @@ To host your own copy, turn on GitHub Pages for your fork (Settings â†’ Pages â†
 
 ## Related
 
+- [SAML check](https://github.com/jamalsjones/saml-check): review SAML responses, requests and metadata.
 - [JWT lint](https://github.com/jamalsjones/jwt-lint): check the access tokens your provider mints.
 - [Leaver check](https://github.com/jamalsjones/leaver-check): find accounts that outlived the people who owned them.
 
