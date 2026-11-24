@@ -1,5 +1,7 @@
 # OIDC config check
 
+[![Tests](https://github.com/jamalsjones/oidc-config-check/actions/workflows/test.yml/badge.svg)](https://github.com/jamalsjones/oidc-config-check/actions/workflows/test.yml)
+
 Review what your identity provider advertises. Point it at an issuer, or paste its `/.well-known/openid-configuration`, and it flags the flows it still allows, PKCE, signing algorithms, client authentication and the newer defenses, against [OpenID Connect Discovery 1.0](https://openid.net/specs/openid-connect-discovery-1_0.html), the [OAuth 2.0 Security Best Current Practice (RFC 9700)](https://www.rfc-editor.org/rfc/rfc9700) and [RFC 8725](https://www.rfc-editor.org/rfc/rfc8725).
 
 **Use it in the browser:** [jamalsjones.github.io/oidc-config-check](https://jamalsjones.github.io/oidc-config-check/). Your browser fetches the document from your provider directly; nothing goes through a server of mine. Some providers block cross-site requests, in which case paste the JSON instead.
