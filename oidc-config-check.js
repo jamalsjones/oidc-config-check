@@ -53,7 +53,14 @@
     if (!u) return null;
     if (!/^https?:\/\//i.test(u)) u = "https://" + u;
     if (/\/\.well-known\/openid-configuration\/?$/.test(u)) return u.replace(/\/$/, "");
-    return u.replace(/\/+$/, "") + "/.well-known/openid-configuration";
+    return trimSlashes(u) + "/.well-known/openid-configuration";
+  }
+
+  // A loop rather than /\/+$/, which backtracks badly on a long run of slashes.
+  function trimSlashes(s) {
+    var end = s.length;
+    while (end > 0 && s.charCodeAt(end - 1) === 47) end--;
+    return s.slice(0, end);
   }
 
   function issuerFromUrl(url) {
